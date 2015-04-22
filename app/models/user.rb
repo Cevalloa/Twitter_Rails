@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+	before_save {self.email = email.downcase }
+
 	#validates the name field to not be empty
 	validates :name, presence: true
 	#validates name field to max length of 50
@@ -17,6 +19,5 @@ class User < ActiveRecord::Base
 	#validates correct email format
 	validates :email, format: { with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false }
 
-	#validates emails should be unique
 
 end
