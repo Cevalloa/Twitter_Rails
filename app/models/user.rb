@@ -21,5 +21,8 @@ class User < ActiveRecord::Base
 
 	#validates emails should be unique
 
+	has_secure_password
+
+	validates :password, length: {minimum: 6}
 
 end
